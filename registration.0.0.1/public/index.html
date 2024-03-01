@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let eyeicon = document.getElementById("eyeicon");
+            let password = document.getElementById("password");
+            let cpassword = document.getElementById("cpassword");
+            let alertMessage = document.getElementById("alert");
+    
+            eyeicon.onclick = function() {
+                if (password.type === "password") {
+                    password.type = "text";
+                    eyeicon.src="/images/open.png";
+                } else {
+                    password.type = "password";
+                    eyeicon.src="/images/close.png";
+                }
+            };
+
+            cpassword.addEventListener("input", function() {
+                if (cpassword.value !== password.value) {
+                    alertMessage.innerText = "Confirm password does not match";
+                } else {
+                    alertMessage.innerText = "";
+                }
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    
+    <div class="container1">
+        <div class="info">
+            <div class="img"> 
+                <p><h2>Get Started</h2></p>
+            </div>
+        </div>
+        <div class="form_info">
+            <form action="/sign_up" method="post" >
+                <h1>Register</h1>
+                <input type="text" class="box" id="name" name="name" placeholder="First Name" required>
+                
+                <input type="text" class="box" id="lname" name="lname" placeholder="Last Name" required>
+                <br>
+                <input type="email" class="box" id="email" name="email" placeholder="your email address" required>
+                
+                <input type="text" class="box" id="gender" name="gender" placeholder="Gender" required>
+                <br>
+                <input type="password" class="box" id="password" name="password"  placeholder="Password" required>
+                <img src="/images/close.png" alt="open" id="eyeicon">
+
+                <input type="password" class="box" id="cpassword" name="cpassword" placeholder="Confirm Password" required >
+                <br><br>
+                <error id="alert"></error>
+                <br>
+                <input type="submit" value="Submit" id="submit">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
